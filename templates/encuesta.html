@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+    
+        <!-- <div class="logo-container">
+            <img src="/static/escudologo.jpeg" alt="Descripción de la imagen">
+        </div> -->
+    
+    
+<body>
+   
+    <div class="survey-container">
+        <div class="header">
+            <h1>Encuesta</h1>
+        </div>
+    
+        <form action="/submit-encuesta" method="POST">
+            <label for="pregunta1">¿Por qué quieres apostar?</label>
+            <textarea id="pregunta1" name="pregunta1" required></textarea>
+            <br><br>
+            <label for="pregunta2">¿Tienes la necesidad de ganar dinero?</label>
+            <textarea id="pregunta2" name="pregunta2" required></textarea>
+            <br><br>
+            <label for="pregunta3">¿Quién le ha metido a este mundo?</label>
+            <textarea id="pregunta3" name="pregunta3" required></textarea>
+            <br><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

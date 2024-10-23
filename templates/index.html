@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FactorGol</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="warning-popup">
+        <div class="warning-content">
+            <h1>¡ADVERTENCIA!</h1>
+            <p>Esto es una página de GAMBLING</p>
+            <p>TIENE EL ACCESO BLOQUEADO A ESTA WEB</p>
+            <button onclick="reportar()">Reportar</button>
+            <button onclick="location.href='/encuesta'">Aceptar</button>
+        </div>
+    </div>
+    <div class="top-right-buttons">
+        <button onclick="location.href='/login'">Iniciar Sesión</button>
+        <button onclick="location.href='/register'">Registrarse</button>
+    </div>
+    <div class="container">
+        <h1>FactorGol</h1>
+        <img src="/static/sportiumPromocion.jpeg" alt="Descripción de la imagen" style="width:100%; max-width:600px; margin: 20px 0;">
+        <div class="events">
+            {% for event in events %}
+            <div class="event">
+                <h2>{{ event.team1 }} vs {{ event.team2 }}</h2>
+                <p>Cuotas: {{ event.team1 }} - {{ event.odds1 }}, {{ event.team2 }} - {{ event.odds2 }}</p>
+                <form action="/bet" method="POST">
+                    <input type="hidden" name="event_id" value="{{ event.id }}">
+                    <label for="amount">Cantidad:</label>
+                    <input type="number" name="amount" required>
+                    <br><br>
+                    <button type="submit" name="team" value="{{ event.team1 }}">Apostar a {{ event.team1 }}</button>
+                    <button type="submit" name="team" value="{{ event.team2 }}">Apostar a {{ event.team2 }}</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        // Popup de advertencia no se puede cerrar
+        const popup = document.getElementById('warning-popup');
+        popup.style.display = 'block'; //block
+
+        function reportar() {
+            const email = "pogado3500@abaot.com";
+            const subject = "Reporte de página GAMBLING";
+            const body = "Esta página Web está catalogada como GAMBLING, se ha reportado como si no lo fuese. Revíselo y active o desactive la protección del ludópata.";
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+</body>
+</html>
